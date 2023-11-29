@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Models\Seller;
+use App\Http\Controllers\SellerController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -24,5 +25,9 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/seller',function(){
     $seller = Seller::all();
     echo "<pre>";
-    print_r($seller);
+    print_r($seller->toArray());
 });
+
+
+Route::get('/sellers', [SellerController::class, 'index']);
+Route::get('/get-sellers', [SellerController::class, 'getSellers'])->name('get.sellers');
