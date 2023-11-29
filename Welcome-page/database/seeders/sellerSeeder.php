@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use App\Models\Seller;
+use Faker\Factory as Faker;
 
 class sellerSeeder extends Seeder
 {
@@ -14,10 +15,14 @@ class sellerSeeder extends Seeder
      */
     public function run()
     {
-        $seller = new Seller;
-        $seller->seller_name="nehil";
-        $seller->seller_email="nehil@gmail.com";
-        $seller->address="hjkghjkgh";
-        $seller->save();
+        $faker = Faker::create();
+        for($i=1;$i<=100;$i++){
+            $seller = new Seller;
+            $seller->seller_name=$faker->name ;
+            $seller->seller_email=$faker->email;
+            $seller->address=$faker->address;
+            $seller->save();
+        }
+
     }
 }
