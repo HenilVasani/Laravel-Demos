@@ -18,9 +18,10 @@ class sellerSeeder extends Seeder
         $faker = Faker::create();
         for($i=1;$i<=100;$i++){
             $seller = new Seller;
-            $seller->seller_name=$faker->name ;
-            $seller->seller_email=$faker->email;
-            $seller->address=$faker->address;
+            $seller->name=$faker->name ;
+            $seller->email=$faker->email;
+            $seller->password=$faker->password;
+            $seller->subscription_expiry="2023-12-10 11:54:06";
             $seller->save();
         }
 

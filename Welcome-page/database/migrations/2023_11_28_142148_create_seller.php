@@ -14,10 +14,11 @@ class CreateSeller extends Migration
     public function up()
     {
         Schema::create('seller', function (Blueprint $table) {
-            $table->id('seller_id' );
-            $table->string('seller_name',60);
-            $table->string('seller_email',60);
-            $table->text('address');
+            $table->id('id' );
+            $table->string('name',60);
+            $table->string('email',60);
+            $table->string('password',20);
+            $table->dateTime('subscription_expiry');
             $table->timestamps();
         });
     }

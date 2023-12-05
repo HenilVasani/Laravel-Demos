@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Models\Seller;
 use App\Http\Controllers\SellerController;
+use App\Http\Controllers\StudentController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,12 +24,16 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/seller',function(){
-    $seller = Seller::all();
-    echo "<pre>";
-    print_r($seller->toArray());
-});
 
 
-Route::get('/sellers', [SellerController::class, 'index']);
-Route::get('/get-sellers', [SellerController::class, 'getSellers'])->name('get.sellers');
+Route::get('/sellers', [SellerController::class, 'fetchyajradata'])->name('sellers');;
+
+Route::get('edit/{id}', [SellerController::class, 'edityajradata'])->name('sellers.edit');
+
+Route::post('update/{id}', [SellerController::class, 'updateyajradata'])->name('sellers.update');
+
+Route::get('delete/{id}', [SellerController::class, 'deleteyajradata'])->name('sellers.delete');
+
+Route::post('create', [SellerController::class, 'createyajradata'])->name('sellers.create');
+Route::view('create','yajracreate');
+
