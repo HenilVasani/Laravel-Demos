@@ -7,6 +7,10 @@ use App\Models\Seller;
 use DataTables;
 use Carbon\Carbon;
 use Validator;
+use App\Mail\datamail;
+use App\Mail\datadeletemail;
+use Illuminate\Support\Facades\Mail;
+
 class SellerController extends Controller
 {
   
@@ -66,14 +70,39 @@ class SellerController extends Controller
     return redirect()->route('sellers');
   }
   }
-  function deleteyajradata($id)
+
+  function deleteyajradata(Request $req,$id)
   {  
-      // $data=User::find($id);
-      $user= Seller::find($id);
-      if (!$user) {
-          return 'Email not found.';
-      }
-     $user->delete();
-      return redirect()->route('sellers');
+    // $data=User::find($id);
+   
+    $email = Seller::where('id', $id)->first();
+
+    if (!$email) {
+        return 'Email not found.';
+    }
+    
+    Mail::to($email->email)->send(new datadeletemail($email));
+    $req->session()->flash('email_sent', 'Kindly Confirm Mail For Delete Data');
+    //$email->delete();
+    return redirect()->route('sellers');
+}
+
+function confirmdelete(Request $req,$id)
+{
+  $data=Seller::find($id);
+  $data->delete();
+  $req->session()->flash('email_confirm', 'Data Deleted Successfully.');
+  return redirect()->route('sellers');
+}
+
+function mailyajradata($id){
+  $email = Seller::where('id', $id)->first();
+
+  if (!$email) {
+      return 'Email not found.';
   }
+
+  Mail::to($email->email)->send(new datamail($email));
+  return 'Email sent successfully!';
+}
 }

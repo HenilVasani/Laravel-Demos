@@ -34,6 +34,10 @@ Route::post('update/{id}', [SellerController::class, 'updateyajradata'])->name('
 
 Route::get('delete/{id}', [SellerController::class, 'deleteyajradata'])->name('sellers.delete');
 
+Route::get('mail/{id}', [SellerController::class, 'mailyajradata'])->name('sellers.mail');
+
+Route::get('deletedata/{id}', [SellerController::class, 'confirmdelete'])->name('sellers.confirmdelete');
+
 Route::post('create', [SellerController::class, 'createyajradata'])->name('sellers.create');
 Route::view('create','yajracreate');
 

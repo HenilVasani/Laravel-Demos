@@ -16,6 +16,7 @@
                 <th>Email</th>
                 <th>subscription_expiry</th> 
                 <th>Edit</th>
+                <th>Mail</th>
                 <th>Delete</th>
             </tr>
         </thead>
@@ -40,6 +41,13 @@
                 name: 'edit',
                 render: function (data) {
                         return '<a href="{{ route('sellers.edit', ':id') }}'.replace(':id', data.id) + '" class="btn btn-success"><span>Edit</span></a>';
+                }
+            },
+            {
+                data: null,
+                name: 'mail',
+                render: function (data) {
+                        return '<a href="{{ route('sellers.mail', ':id') }}'.replace(':id', data.id) + '" class="btn btn-success"><span>Send Mail</span></a>';
                 }
             },
             {
