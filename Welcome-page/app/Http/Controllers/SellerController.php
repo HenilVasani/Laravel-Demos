@@ -46,29 +46,15 @@ class SellerController extends Controller
   function createyajradata(Request $req)
   {
    
-  $rules=array(
-      "name"=>"required",
-      "email"=>"required",
-      "password"=>"required"
-  );
-      $validator=Validator::make($req->all(),$rules);
-      if($validator->fails())
-      {
-         return view('yajracreate')
-         ->withInput($req->input())
-         ->withErrors($validator);
-      }
-      else{
     $currentDate=Carbon::now();
     $data=new Seller;
     $data->name=$req->name;
     $data->email=$req->email;
     $data->password=$req->password;
     $data->subscription_expiry=$currentDate;
-    $data->Expiry_date($req->expiry_days);
     $data->save();
     return redirect()->route('sellers');
-  }
+  
   }
 
   function deleteyajradata(Request $req,$id)
