@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Models\Seller;
 use App\Http\Controllers\SellerController;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\membercontroller;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,3 +42,7 @@ Route::get('deletedata/{id}', [SellerController::class, 'confirmdelete'])->name(
 Route::post('create', [SellerController::class, 'createyajradata'])->name('sellers.create');
 Route::view('create','yajracreate');
 
+Route::get('members',[membercontroller::class,'data']);
+
+Route::post('createmember', [membercontroller::class, 'savedata'])->name('members.create');
+Route::view('createmember','memberform');
