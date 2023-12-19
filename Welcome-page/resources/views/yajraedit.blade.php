@@ -1,4 +1,4 @@
-@vite(['resources/sass/app.scss', 'resources/js/app.js'])
+
 <h1> Edit data</h1>
 @if ($data)
 <form action={{route("sellers.update",$data->id)}} method="POST">

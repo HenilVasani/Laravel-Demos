@@ -58,13 +58,13 @@ $rules=array(
          ->withInput($req->input())
          ->withErrors($validator);
       }
-      else{
+      else{ 
     $currentDate=Carbon::now();
     $data=new Seller;
     $data->name=$req->name;
     $data->email=$req->email;
     $data->password=$req->password;
-    $data->subscription_expiry=$currentDate;
+    $data->subscription_expiry= $currentDate;
     $data->save();
     return redirect()->route('sellers');
   }

@@ -8,6 +8,7 @@ use Carbon\Carbon;
 
 class Seller extends Model
 {
+  
     protected $table = 'seller';
     /**
      * The attributes that are mass assignable.
@@ -21,8 +22,6 @@ class Seller extends Model
         'subscription_expiry',
         
     ];
-
-
     public function Expiry_date($days)
     {
          $currentSubscription_Expiry = Carbon::parse($this->subscription_expiry);
@@ -30,5 +29,6 @@ class Seller extends Model
          $this->subscription_expiry=$newSubscription_Expiry ;
          $this->save();
     }
+   
     
 }
