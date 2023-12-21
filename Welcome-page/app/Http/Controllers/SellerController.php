@@ -65,6 +65,7 @@ $rules=array(
     $data->email=$req->email;
     $data->password=$req->password;
     $data->subscription_expiry= $currentDate;
+    $data->Expiry_date($req->expiry_days);
     $data->save();
     return redirect()->route('sellers');
   }

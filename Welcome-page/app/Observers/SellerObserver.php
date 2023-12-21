@@ -19,8 +19,9 @@ class SellerObserver
      */
     public function creating(Seller $seller)
     {
-    
-       
+        $faker = Faker::create();
+        $sixDigitNumber = $faker->numberBetween(100000, 999999); 
+        $seller->Random= $sixDigitNumber; 
     }
 
     /**

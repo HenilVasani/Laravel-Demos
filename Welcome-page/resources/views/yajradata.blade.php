@@ -15,6 +15,7 @@
                 <th>Name</th>
                 <th>Email</th>
                 <th>subscription_expiry</th> 
+                <th>Random Code</th>
                 <th>Edit</th>
                 <th>Mail</th>
                 <th>Delete</th>
@@ -36,6 +37,7 @@
                 { data: 'name', name: 'name' },
                 { data: 'email', name: 'email' },
                 {data:'subscription_expiry',name:'subscription_expiry'},
+                {data:'Random',name:'Random'},
                 {
                 data: null,
                 name: 'edit',

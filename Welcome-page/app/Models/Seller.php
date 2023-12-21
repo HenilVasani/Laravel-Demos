@@ -3,12 +3,15 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Model;
+use Laravel\Sanctum\HasApiTokens;
 use Carbon\Carbon;
 
 class Seller extends Model
 {
-  
+    use HasApiTokens, HasFactory, Notifiable;
+
     protected $table = 'seller';
     /**
      * The attributes that are mass assignable.
@@ -20,7 +23,13 @@ class Seller extends Model
         'seller_email',
         'password',
         'subscription_expiry',
+        'Random',
         
+    ];
+    
+    protected $hidden =[
+        'password',
+        'remember_token',
     ];
     public function Expiry_date($days)
     {
